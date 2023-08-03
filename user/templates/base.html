@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Base page {% endblock %} </title>
+    <style>
+        .nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #efefef;
+        }
+        a{
+            text-decoration: none;
+            color: #090909;
+            padding: 5px;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container h1, form {
+            width: fit-content;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        form{
+            background-color: rgb(169,241, 217);
+            padding: 20px 30px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .form-item{
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 14px;
+        }
+        .form-item >input{
+            min-width: 200px;
+            padding: 7px 5px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        input[type=submit]{
+            padding: 7px 12px;
+            background-color: #090909;
+            color: #fff;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .right{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user >img{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ccc;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav" >
+        <div class="left" >
+            <a href="/user/">Home</a>
+            <a href="/book/">book</a>
+        </div>
+        <div class="right" >
+            {% if user.is_authenticated %}
+                <div class="user" >
+                    <span> Hi </span>
+                    {% if user.avatar %}
+                    <img src="{{user.avatar.url}}" alt="avatar">
+                    {% endif %}
+                    {{user.username}}, 
+                </div>
+                <a href="/user/logout">logout</a>
+            {% else %}
+                <a href="/user/login">login</a>
+                <a href="/user/register">register</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="container" >
+        {% block content  %}{% endblock %}
+    </div>
+    
+</body>
+</html>

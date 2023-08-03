@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} registration page {% endblock title %}
+    
+
+{% block content %}
+    <h1> registration page </h1>
+    <p>{{form.errors}}</p>
+    <form method="post" action="" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {% comment %}{{form.as_p}}{% endcomment %}
+        {% comment %}
+        {% for field in form  %}
+            <div> {{field.label}} {{field}} </div>
+        {% endfor  %}
+        {% endcomment %}
+
+        <div class="form-item" >
+            {{form.email.label}}
+            {{form.email}}
+        </div>
+
+        <div class="form-item" >
+            {{form.username.label}}
+            {{form.username}}
+        </div>
+        <div class="form-item" >
+            {{form.password1.label}}
+            {{form.password1}}
+        </div>
+        <div class="form-item" >
+            {{form.password2.label}}
+            {{form.password2}}
+        </div>
+        <div class="form-item" >
+            {{form.avatar.label}}
+            {{form.avatar}}
+        </div>
+
+            
+        <input type="submit" value="register">
+    </form>
+    
+{% endblock content %}
+    

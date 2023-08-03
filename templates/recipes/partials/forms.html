@@ -1,0 +1,35 @@
+<form
+  action="."
+  method="POST"
+  hx-post="."
+  hx-swap="outerHTML"
+  hx-trigger="{% if form.instance.id %}change delay:500ms,{% else %} submit{% endif %}"
+>
+  {% csrf_token %} {{ form.as_p}}
+
+  <div class="htmx-indicator">loading...</div>
+  <button
+    style="margin-top: 10px"
+    type="submit"
+    class="htmx-inverted-indicator"
+  >
+    save
+  </button>
+</form>
+
+<!-- 
+    {% if formset %}
+        <h3>Ingredients</h3>
+        {{formset.management_form}}
+        <div id="ingredient-form-list" >
+            {% for form in formset %}
+                <div  class="ingredient-form" >
+                    {{form.as_p}}
+                </div>
+            {% endfor %}
+        </div>
+        <div id="empty_form" class="hidden" >{{ formset.empty_form }}</div>
+        <button id="add-more" type="button" >Add More</button>
+        
+    {% endif %}
+ -->

@@ -1,0 +1,16 @@
+{{enter}}
+
+Search for {{request.GET.q }} under {{request.GET.type}}
+
+    {% for object in queryset %}
+        <div>
+            <li><a href="{{object.get_absolute_url}}">{{object.name}}</a></li>
+            {% empty %}
+            <li>NO result found </li>
+        </div>
+    {% endfor %}
+
+{% if request.htmx %}
+    <a href="/search/?q={{ request.GET.q }}&&type={{ request.GET.type }}">view all</a>
+
+{% endif %}

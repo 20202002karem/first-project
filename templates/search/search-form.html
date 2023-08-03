@@ -1,0 +1,25 @@
+<div>
+    <form action="/search/" method="GET"  >
+        <input type="text" name="q" value="{{request.GET.q}}" hx-get='/search/'  
+            hx-trigger='change delay:200ms' hx-include='#search-type'
+            hx-target="#typehead-result" hx-debug />
+        <select name="type" id="search-type">
+            {% if request.GET.type == 'articles' %}
+                <option value="articles" selected >Article</option>
+            {% else %}
+                <option value="articles">Article</option>
+            {% endif %}
+
+            {% if request.GET.type == 'recipes' %}
+                <option value="recipes" selected >Recipe</option>
+            {% else %}
+                <option value="recipes">Recipe</option>
+            {% endif %}
+        </select>
+
+        <input type="submit" />
+    </form>
+    <div id="typehead-result">
+
+    </div>
+</div>

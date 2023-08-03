@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Home page</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>Home page</h1>
+    {% if name %}
+        <p>Hi {{name}} , How are you</p>
+    {% else %}
+        <p>Hi  Everyone, How are you</p>
+    {% endif %}
+    <p>your Aage is: {{ age }}</p>
+    <ul>
+        {% for c in colors %}
+            <li>{{c}}</li>
+        {% endfor %}
+    </ul>
+</body>
+<script>
+
+</script>
+</html>
+
+
+<!-- 
+    Block :Bigin, End
+    
+-->
+{% comment %}
+
+{% if condition %}
+    cod-1
+{% elif condition %}
+    cod_2
+{% else %}
+    cod_3
+
+{% for iitem in list %}
+    cod
+{% endfor %}
+{% endcomment %}
+
+
