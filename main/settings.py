@@ -24,7 +24,7 @@ SECRET_KEY = '7c*tv0d$f8_b3a*i0g1wt7(2b+*09r0!s+r#y#n=v-#_!ol*bd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = []
 if DEBUG is False:
     ALLOWED_HOSTS = ['127.0.0.1']
@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # sfdfsfds
+    "storages",
     'django_htmx',
+    # sdsds
     'book',
     'user',
     'recipes',
@@ -157,18 +160,19 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfile-cdn')
 # https://trydjango3.nyc3.digitaloceanspaces.com
 
 
+from .cdn.conf import *  # noqa
+
+MEDIA_URL ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfile-cdn/uploads')
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 AUTH_USER_MODEL = 'user.User'
 # app.moddel
 
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 
 

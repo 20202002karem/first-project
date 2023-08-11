@@ -1,3 +1,6 @@
+import pathlib
+import uuid
+
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
@@ -47,6 +50,16 @@ class Recipe(models.Model):
     def get_delete_url(self):
         return reverse('recipes:delete', kwargs={'id': self.id })
 
+def recipe_ingrediant_image_upload_handler(instance, filename):
+    fpath = pathlib.Path(filename)
+    new_fname = str(uuid.uuid1())
+    return f'recipe/{new_fname}{fpath.suffix}'
+
+
+class RecipeIngredientImage(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=recipe_ingrediant_image_upload_handler)
+    extracted = models.JSONField(blank=True, null=True)
 
 class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(Recipe,on_delete=models.CASCADE)

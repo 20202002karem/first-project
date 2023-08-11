@@ -4,7 +4,8 @@ from django.forms.models import modelformset_factory
 from django.http import HttpResponse, Http404
 from django.urls import reverse
 from .models import Recipe, RecipeIngredient
-from .forms import RecipeForm, RecipeIngredientForm
+from .forms import RecipeForm, RecipeIngredientForm, RecipeIngredientImageForm
+from .services import extract_text_via_ocr_service
 # Create your views here.
 @login_required
 def recipe_list_view(request):
@@ -159,10 +160,30 @@ def recipe_ingredient_delete_view(request,id_perant=None,id=None ):
         'object':obj,
     }
     return render(request, 'recipes/delete.html',context=context)
+
+
+
+def recipe_ingredient_image_upload_view(request, parent_id=None):
+    templates_name = 'recipes/image-form.html'
+    if request.htmx :
+        templates_name ="recipes/partials/image-upload-form.html"
+    try:
+        parent_obj = Recipe.objects.get(id=parent_id)
+    except:
+        parent_obj = None
+    if parent_id is None:
+        raise Http404
+    form = RecipeIngredientImageForm(request.POST or None  , request.FILES or None)
+    
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.recipe = parent_obj
+        obj.save()
         
-
-
-
+        # result = extract_text_via_ocr_service(obj.image)
+        # obj.extracted = result
+        # obj.save()
+    return render(request, templates_name,{'form':form})
 
 
 

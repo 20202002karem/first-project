@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% static 'base.css' %}" />
     <title>Document</title>
     <style>
       .htmx-indicator {
@@ -29,13 +29,12 @@
   </head>
   <body>
     <p>Holo world</p>
-    {% include 'search/search-form.html' %}
-    {% block content %} {% endblock content %}
+    {% include 'search/search-form.html' %} {% block content %} {% endblock content %}
 
     <script>
-      document.body.addEventListener('htmx:ConfigRequest',(event)=>{
-        event.detail.headers['x-csrfToken']= '{{csrf_token}}'
-      })
+      document.body.addEventListener("htmx:ConfigRequest", (event) => {
+        event.detail.headers["x-csrfToken"] = "{{csrf_token}}";
+      });
     </script>
   </body>
 </html>

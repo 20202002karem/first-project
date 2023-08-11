@@ -7,6 +7,7 @@ from .views import (
     recipe_ingredient_update_hx_view,
     recipe_detail_hx_view,
     
+    recipe_ingredient_image_upload_view,
     recipe_delete_view,
     recipe_ingredient_delete_view,
     recipe_detail_view,
@@ -23,13 +24,14 @@ urlpatterns = [
         recipe_ingredient_update_hx_view,name='hx_ingredient_create'),
     path('hx/<int:id>/',recipe_detail_hx_view,name='hx_detail'),
     
+    path('<int:parent_id>/image-upload/',recipe_ingredient_image_upload_view),
     path('<int:id>/delete/', recipe_delete_view, name='delete' ),
     path('<int:id_perant>/ingredient/<int:id>/delete/',
         recipe_ingredient_delete_view,name='ingredient_delete'),
     path('<int:id>/',recipe_detail_view, name='detail'),
     
 ]
-    
+
 
 
 
