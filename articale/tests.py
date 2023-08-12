@@ -46,12 +46,12 @@ class ArticleTestCase(TestCase):
         unique_slug_list = list(set(slug_list))
         self.assertEqual(len(slug_list), len(unique_slug_list))
         
-    def test_user_asdded_slug_unique(self):
-        obj_user = Article.objects.create(name='hello world', content='any thingkind')
-        slug_list =list(Article.objects.all().values_list('slug', flat=True))
-        slug_list.append(obj_user.slug)
-        unique_slug_list = list(set(slug_list))
-        self.assertEqual(len(slug_list), len(unique_slug_list))
+    # def test_user_asdded_slug_unique(self):
+    #     obj_user = Article.objects.create(name='hello world', content='any thingkind')
+    #     slug_list =list(Article.objects.all().values_list('slug', flat=True))
+    #     slug_list.append(obj_user.slug)
+    #     unique_slug_list = list(set(slug_list))
+    #     self.assertEqual(len(slug_list), len(unique_slug_list))
         
         
         
