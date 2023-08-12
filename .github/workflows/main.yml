@@ -47,9 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Install doctl
         uses: digitalocean/action-doctl@v3
-        with: 
+        with:
           token: ${{ secrets.DO_ACCESSS_TOKEN }}
       - name: Run a DOCTL command
-        run:
-        doctl apps update ${{ secrets.DO_APP_ID }} --spec .do/app.yml
-
+        run: doctl apps update ${{ secrets.DO_APP_ID }} --spec .do/app.yml
