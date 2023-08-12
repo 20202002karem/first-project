@@ -36,17 +36,17 @@ jobs:
           POSTGRES_DB: djtesting
           POSTGRES_PORT: 5432
         run: python manage.py test
-      - name: Push Main Branch into Production
-        uses: 20202002karem/action-branch-to-branch@main
-        with:
-          dest_branch: production-3
-          source_branch: main
-          commit_message: "Release production version"
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DO_ACCESSS_TOKEN }}
-      - name: Run a DOCTL command
-        run: doctl apps update ${{ secrets.DO_APP_ID }} --spec .do/app.yml
+      # - name: Push Main Branch into Production
+      #   uses: 20202002karem/action-branch-to-branch@main
+      #   with:
+      #     dest_branch: production-3
+      #     source_branch: main
+      #     commit_message: "Release production version"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      # - name: Install doctl
+      #   uses: digitalocean/action-doctl@v2
+      #   with:
+      #     token: ${{ secrets.DO_ACCESSS_TOKEN }}
+      # - name: Run a DOCTL command
+      #   run: doctl apps update ${{ secrets.DO_APP_ID }} --spec .do/app.yml
