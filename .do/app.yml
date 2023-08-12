@@ -68,7 +68,7 @@ jobs:
         scope: RUN_TIME
         value: ${db.DATABASE_URL}
     github:
-      branch: main
+      branch: production-3
       deploy_on_push: true
       repo: 20202002karem/first-project
     instance_count: 1
@@ -86,7 +86,7 @@ services:
         scope: RUN_TIME
         value: ${db.DATABASE_URL}
     github:
-      branch: main
+      branch: production-3
       deploy_on_push: true
       repo: 20202002karem/first-project
     http_port: 8080
