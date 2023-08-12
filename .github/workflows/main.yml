@@ -18,6 +18,6 @@ jobs:
         run: echo "Hello, world!"
 
       - name: Run a multi-line script
-        run: |
-          echo "Add other actions to bulid,"
-          acho "test, and deploy your project."
+        run: 
+          echo "Add other actions to bulid, test, and deploy your project."
+      
