@@ -46,7 +46,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Install doctl
-        uses: digitalocean/action-doctl@v3
+        uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DO_ACCESSS_TOKEN }}
       - name: Run a DOCTL command
