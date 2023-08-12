@@ -22,12 +22,21 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s 
         --health-retries 5
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to bulid,
-          acho test, and deploy your project.
+      - name: Checkout code 
+        uses: actions/checkout@v3
+      - name: Setup python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.10
+      - name: Intall requirements
+        run: pip install -r requirements.txt
+      - name: Run Tests
+        env:
+          DEBUG: '0'
+          DJANGO_ALLOWED_HOSTS: CI_CD_TEST_KEY
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: djtesting
+          POSTGRES_PORT: 5432
+        run:
+          python manage.py test
