@@ -68,7 +68,7 @@ jobs:
         scope: RUN_TIME
         value: ${db.DATABASE_URL}
     github:
-      branch: production-3
+      branch: main
       deploy_on_push: true
       repo: 20202002karem/first-project
     instance_count: 1
