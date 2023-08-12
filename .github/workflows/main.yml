@@ -1,5 +1,4 @@
 name: CI/CD Django, Postgres,DigitalOcean
-
 on:
   push:
     branches: ["main"]
