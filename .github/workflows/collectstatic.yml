@@ -1,8 +1,5 @@
 name: Collectstatic for Django Static Files
 
-on:
-  workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubutu-latest
