@@ -1,5 +1,10 @@
 name: Collectstatic for Django Static Files
 
+on:
+  push:
+    branches:
+      - master
+
 jobs:
   build:
     runs-on: ubutu-latest
