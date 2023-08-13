@@ -2,12 +2,12 @@ name: Production CI/CD Django, Postgres, Tests & Deploy to DigitalOcean.
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  bulid: 
+  bulid:
     runs_on: ubuntu-latest
     services:
       postgres_main:
@@ -38,7 +38,6 @@ jobs:
           POSTGRES_PORT: 5432
         run: python manage.py test
       - name: Run Collectstatic
-      continue_on_error: true
         env:
           DEBUG: "0"
           DJANGO_ALLOWED_HOSTS: CI_CD_TEST_KEY
