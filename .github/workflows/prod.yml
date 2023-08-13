@@ -46,7 +46,7 @@ jobs:
           AWS_STORAGE_BUCKET_NAME: ${{ secrets.AWS_STORAGE_BUCKET_NAME }}
         run: python manage.py collectstatic --noinput
       - name: Push Main Branch into Production
-        uses: 20202002karem/action-branch-to-branch@main
+        uses: 20202002karem/first-project@main
         with:
           dest_branch: production-3
           source_branch: main
