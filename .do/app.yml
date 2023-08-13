@@ -54,23 +54,30 @@ envs:
   - key: AWS_STORAGE_BUCKET_NAME
     scope: RUN_AND_BUILD_TIME
     value: trydjango3
-ingress:
-  rules:
-    - component:
-        name: try-django-3-2
-      match:
-        path:
-          prefix: /
+  - key: OCR_API_TOKEN_HEADER
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET
+    value: aabc
+  - key: OCR_API_ENDPOINT
+    scope: RUN_AND_BUILD_TIME
+    value: https://ocr-microservice-3gl52.ondigitalocean.app
+
+# ingress:
+#   rules:
+#     - component:
+#         name: try-django-3-2
+#       match:
+#         path:
+#           prefix: /
 jobs:
   - environment_slug: python
     envs:
       - key: DATABASE_URL
         scope: RUN_TIME
         value: ${db.DATABASE_URL}
-    github:
+    git:
       branch: main
-      deploy_on_push: true
-      repo: 20202002karem/first-project
+      repo_clone_url: https://github.com/20202002karem/first-project.git
     instance_count: 1
     instance_size_slug: basic-xxs
     kind: PRE_DEPLOY
