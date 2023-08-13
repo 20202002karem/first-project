@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubutu-latest
 
-    steup:
+    setup:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Setup python 3.10
