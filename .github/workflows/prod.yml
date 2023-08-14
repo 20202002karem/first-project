@@ -59,4 +59,4 @@ jobs:
         with:
           token: ${{ secrets.DO_ACCESSS_TOKEN }}
       - name: Run a DOCTL command
-        run: doctl apps update ${{ secrets.DO_API_TOKEN }} --access-token ${{ secrets.DO_API_TOKEN }} --spec .do/app.yml
+        run: doctl apps update ${{ secrets.DO_APP_ID }} --spec .do/app.yml
