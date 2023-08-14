@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "storages",
     'django_htmx',
-    # 'book',
+    'book',
     'user',
     'recipes',
     'search',
