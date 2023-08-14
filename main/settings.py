@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'search',
     'articale',
 ]
+
 # python manage.py startapp user
 # python manage.py makemigration user
 # python manage.py makemigrate  > Error 
