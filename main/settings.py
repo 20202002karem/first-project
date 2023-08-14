@@ -40,10 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # sfdfsfds
     "storages",
     'django_htmx',
-    # sdsds
     'book',
     'user',
     'recipes',
